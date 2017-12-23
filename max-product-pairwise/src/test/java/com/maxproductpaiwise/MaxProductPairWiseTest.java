@@ -49,7 +49,7 @@ public class MaxProductPairWiseTest {
 			long resultSlower = new MaxProductPairWise().getSlowerSolution(array);
 			long resultFaster = new MaxProductPairWise().getFasterSolution(array);
 
-			System.out.println("Result Slower = " + resultSlower + "| Result Slower = " + resultFaster);
+			System.out.println("Result Slower = " + resultSlower + " | Result Faster = " + resultFaster);
 			assertThat(resultSlower, equalTo(resultFaster));
 
 			System.out.println("OK!");
