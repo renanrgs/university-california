@@ -40,7 +40,7 @@ public class MaxProductPairWiseTest {
 			long[] array = new long[length];
 
 			for (int i = 0; i < length; i++) {
-				array[i] = random.nextInt(100000);
+				array[i] = random.nextInt(1000000);
 			}
 
 			LongStream intStream = LongStream.of(array);
