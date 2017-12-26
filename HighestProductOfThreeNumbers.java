@@ -13,6 +13,7 @@ public class HighestProductOfThreeNumbers {
 	private static int getHighestProduct(int[] input){
 		int highestIndex = -1;
 		int lowestNegativeIndex = -1;	
+		if(input.length == 3) return input[0] * input[1] * input[2];
 		for(int i = 0; i < input.length; i++){
 			if(highestIndex == -1 || input[highestIndex] < input[i]){
 				highestIndex = i;		
@@ -30,27 +31,35 @@ public class HighestProductOfThreeNumbers {
 			if(highestIndex2 == -1 || input[highestIndex2] < input[i]) {
 				highestIndex2 = i;	
 			}
-		}
-		for(int i = 0; i < input.length; i++){
-			if(i == lowestNegativeIndex){
+			if(lowestNegativeIndex == i){
 				continue;
 			}
-
-			if(lowestNegativeIndex2 == -1 || input[lowestNegativeIndex2] > input[i] ){
+			if(lowestNegativeIndex2 == -1 || input[lowestNegativeIndex2] > input[i]){
 				lowestNegativeIndex2 = i;
 			}
 		}
+
 		int highestProductTwoNumbers = input[highestIndex] * input[highestIndex2];
-		if(highestProductTwoNumbers < (input[lowestNegativeIndex] * input[lowestNegativeIndex2])){
-			highestProductTwoNumbers = input[lowestNegativeIndex] * input[lowestNegativeIndex2];
+		int highestProductTwoNegativeNumbers = input[lowestNegativeIndex] * input[lowestNegativeIndex2];
+
+		if(highestProductTwoNegativeNumbers > highestProductTwoNumbers) {
+			return highestProductTwoNegativeNumbers * input[highestIndex];
 		}
-		int highestProduct = highestProductTwoNumbers; 		
-		for(int i = 0; i < input.length; i++) {
-			if(highestProduct < highestProductTwoNumbers * input[i]) {
-				System.out.println(input[i]);
-				highestProduct = highestProductTwoNumbers * input[i]; 
-			}	
+
+		int highestIndex3 = -1;
+		for(int i = 0; i < input.length; i++){
+			if(i == highestIndex || i == highestIndex2){
+				continue;
+			}
+			if(highestIndex3 == -1 || input[highestIndex3] < input[i]) {
+				highestIndex3 = i;	
+			}
 		}
-		return highestProduct;
+
+
+		return input[highestIndex] * input[highestIndex2] * input[highestIndex3];
 	}
 }
+/*
+	[-2, -7, 10, 5, -3, 4]
+*/
