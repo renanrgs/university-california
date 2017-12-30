@@ -2,21 +2,21 @@ import java.util.*;
 public class LargestNumber{
 	public static void main(String... args){
 		Scanner scanner = new Scanner(System.in);
-		int length = scanner.nextInt();
-		int[] n = new int[length];
-		for(int i = 0; i < length; i++){
-			n[i] = scanner.nextInt();
-		}
+		String n = scanner.next();
 		System.out.println(getLargest(n));
 	}
 
-	private static int getLargest(int[] n){
-		int largestInd = 0;	
-		for(int i = 0; i < n.length; i++){
-			if(n[i] > n[largestInd])
-				largestInd = i;
+	private static String getLargest(String number){
+		int largest = 0;
+		StringBuilder s = new StringBuilder(number.length());
+		for(int i = 0; i < number.length(); i++){
+			s.append(i);
+			if(number.charAt(i) > number.charAt(largest)){
+				largest = i;
+				s.insert(0, number.charAt(largest));
+				s.deleteCharAt(i + 1);
+			}
 		}
-
-		return n[largestInd];
+		return s.toString();
 	}
 }
