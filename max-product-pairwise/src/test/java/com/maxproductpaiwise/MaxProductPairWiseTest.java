@@ -30,8 +30,17 @@ public class MaxProductPairWiseTest {
 		assertThat(slowerResult, equalTo(140L));
 		assertThat(fasterResult, equalTo(140L));
 	}
-
+	
 	@Test
+	public void simpleTestNegativeNumbers() {
+		long slowerResult = new MaxProductPairWise().getSlowerSolution(new long[] { 7, 5, -14, 2, 8, 8, -10, 1, 2, 3 });
+		long fasterResult = new MaxProductPairWise().getFasterSolution(new long[] { 7, 5, -14, 2, 8, 8, -10, 1, 2, 3 });
+
+		assertThat(slowerResult, equalTo(140L));
+		assertThat(fasterResult, equalTo(140L));
+	}
+
+//	@Test
 	public void stressTest() {
 		while (true) {
 			Random random = new Random();
